@@ -23,7 +23,7 @@ text-align: center;
 // flex-direction: column;
 
 height: 5rem;
-background: var(--footer-bg);
+background: var(--mainDark);
 h5{
     color: white;
     margin: 0.5rem;

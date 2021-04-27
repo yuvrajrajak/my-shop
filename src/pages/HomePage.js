@@ -1,10 +1,15 @@
 import React from 'react'
+import { FeaturedProducts, Hero, Contacts, Services } from '../components'
 
-function HomePage() {
+const HomePage = () => {
     return (
-        <div>
-            HomePage
-        </div>
+        <main>
+            <FeaturedProducts />
+            <Hero />
+            <Services />
+            <Contacts />
+
+        </main>
     )
 }
 

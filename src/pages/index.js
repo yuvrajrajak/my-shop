@@ -1,10 +1,14 @@
-import Home from './HomePage'
-import About from './About'
-import Store from './Store'
+import HomePage from './HomePage'
+import AboutPage from './About'
+import StorePage from './Store'
+import SingleProductPage from './SingleProductPage'
+import CartPage from './CartPage'
 
 
 export {
-    Home,
-    About,
-    Store
+    HomePage,
+    AboutPage,
+    StorePage,
+    SingleProductPage,
+    CartPage
 }
