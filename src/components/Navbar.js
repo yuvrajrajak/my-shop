@@ -6,9 +6,11 @@ import styled from 'styled-components'
 import { useAuth0 } from '@auth0/auth0-react'
 import { FaBars } from 'react-icons/fa'
 import { useProductsContext } from '../context/products_context'
+import { useCartContext } from '../context/cart_context'
 
 const Navbar = () => {
     const { openSidebar } = useProductsContext()
+    const { total_items } = useCartContext()
 
     const { loginWithRedirect, isAuthenticated, user, logout, isLoading } = useAuth0();
 
@@ -55,6 +57,7 @@ const Navbar = () => {
                         className="cart-btn"
                     > Cart
                     <FaShoppingCart />
+                        <span className="cart-value">{total_items}</span>
                     </button>
                 </Link>
                 {
@@ -176,6 +179,7 @@ background: var(--primaryColor);
   }
 
   .cart-login{
+    position: relative;
     margin-right: 4rem;
     width: 200px;
     display: flex;
@@ -194,6 +198,19 @@ background: var(--primaryColor);
       display:none;
   }
 
+}
+.cart-value{
+position: absolute;
+top: -4px;
+left: 60px;
+background: var(--clr-black);
+width: 20px;
+height: 20px;
+font-size: 0.8rem;
+color: var(--clr-white);
+border-radius: 50%;
+padding-top: 0.2rem;
+padding-right: 0.1rem;
 }
 
 `

@@ -5,10 +5,13 @@ import { FaTimes, FaUserMinus, FaUserPlus, FaShoppingCart } from 'react-icons/fa
 import { Link } from 'react-router-dom'
 import { useProductsContext } from '../context/products_context'
 import { useAuth0 } from '@auth0/auth0-react'
+import { useCartContext } from '../context/cart_context'
 
 const Sidebar = () => {
     const { isSidebarOpen, closeSidebar } = useProductsContext()
     const { isAuthenticated, user, loginWithRedirect, logout } = useAuth0()
+    const { total_items } = useCartContext()
+
     const myUser = isAuthenticated && user;
     return (
         <SidebarContainer>
@@ -23,7 +26,7 @@ const Sidebar = () => {
                 <div className="nav-header">
 
                     <ul
-                    onClick={closeSidebar} 
+                        onClick={closeSidebar}
                     >
                         <Link to='/' className="nav-links">
                             Home
@@ -44,6 +47,7 @@ const Sidebar = () => {
                             className="cart-btn"
                         > Cart
                     <FaShoppingCart />
+                            <span className="cart-value">{total_items}</span>
                         </button>
                     </Link>
                     {
@@ -106,6 +110,7 @@ const SidebarContainer = styled.section`
     padding-left: 2.5rem;
 }
 .cart-btn{
+    position: relative;
     outline: none;
     cursor: pointer;
     font-size: 1.5rem;
@@ -159,6 +164,19 @@ const SidebarContainer = styled.section`
         display: none;
     }
 }
+
+.cart-value{
+    position: absolute;
+    top: -4px;
+    left: 60px;
+    background: var(--clr-black);
+    width: 20px;
+    height: 20px;
+    font-size: 0.8rem;
+    color: var(--clr-white);
+    border-radius: 50%;
+    padding-top: 0.2rem;
+    }
 
 `
 
